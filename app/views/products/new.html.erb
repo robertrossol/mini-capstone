@@ -1,0 +1,16 @@
+<h1>New Product</h1>
+<%= form_tag "/products", method: :post do %> <!-- :method => :post -->
+  <div class="form-group">
+    Name: <input type='text' name="form_name">
+  </div>
+  <div class="form-group">
+    Price: <input type='text' name="form_price">
+  </div>
+  <div class="form-group">
+    Image: <input type='text' name="image_name">
+  </div>
+  <div class="form-group">
+    Description: <input type='text' name="description_name">
+  </div>
+  <input type ="submit" value="Create Product">
+<% end %>

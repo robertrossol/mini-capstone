@@ -1,0 +1,9 @@
+<h1>All Products</h1>
+<% @products.each do |product| %>
+  <h2><%= product.name%></h2>
+  <a href="/products/product.id">Back</a>
+  <h3><%=product.price%></h3>
+  <h3><%=product.description%></h3>
+<% end %>
+
+<a href="/products/product.name">Back</a>
