@@ -1,5 +1,15 @@
 <h1>Product Info</h1>
-<h2><%= @products.name %></h2>
-<h2><%= @products.price %></h2>
-<h2><%= @products.image %></h2>
-<h2><%= @products.description %></h2>
+<h2><%= @product.name %></h2>
+<h2><%= @product.sale_message %></h2>
+<h2>$<%= @product.price %></h2>
+<h3>Tax: $<%= @product.tax %></h3>
+<h3>Total: $<%= @product.total %></h3>
+<div class="parent"><img class=product_image src="<%= @product.image %>"></div>
+<h2><%= @product.description %></h2>
+ <h4><a href="/products/<%=@product.id%>/edit">Edit Product</a></h4>
+ <%= form_tag "/products/#{@product.id}", method: :delete do %>
+  <!-- <input type="submit" value="Destroy Product"> -->
+ <% end %>
+<%= link_to "Destroy Product", "/products/#{@product.id}", method: :delete %>
+
+<div><a href="/products">Back to Products</a></div>

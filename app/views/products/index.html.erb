@@ -1,9 +1,17 @@
 <h1>All Products</h1>
-<% @products.each do |product| %>
-  <h2><%= product.name%></h2>
-  <a href="/products/product.id">Back</a>
-  <h3><%=product.price%></h3>
-  <h3><%=product.description%></h3>
+<% @products.each_slice(3) do |three_products| %>
+<div class="row">
+  <% three_products.each do |product| %>
+    <div class="col-md-4">
+      <div class="well">
+        <h2><a href="/products/<%=product.id%>"><%= product.name%></a></h2>
+        <h3><%=product.price%></h3>
+        <img class="product_image" src="<%= product.image %>">
+        <p><%=product.description%></p>
+        <h6>Added <%= product.friendly_created_at %></h6>
+      </div>
+    </div>
+  <% end %>
+</div>
 <% end %>
-
-<a href="/products/product.name">Back</a>
+<div><a href="/products/new">Add New Product</a></div>
