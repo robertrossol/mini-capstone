@@ -1,9 +1,16 @@
 <h1>Product Info</h1>
-<h2><%= @product.name %></h2>
-<h2><%= @product.sale_message %></h2>
-<h2>$<%= @product.price %></h2>
-<h3>Tax: $<%= @product.tax %></h3>
-<h3>Total: $<%= @product.total %></h3>
+<h1><%= @product.name %></h1>
+<% if @product.sale_message %>
+  <h3>Discount Item</h3>
+  <h3 class="discount-item">Price: <%= number_to_currency(@product.price) %></h3>
+<% else %>
+  <h3>Everyday Value!</h3>
+  <h3>Price: <%= number_to_currency(@product.price) %></h3>
+<% end %>
+<!-- <h2><%= @product.sale_message %></h2>
+<h2><%= number_to_currency(@product.price) %></h2> -->
+<h3>Tax: <%= number_to_currency(@product.tax) %></h3>
+<h3>Total: <%= number_to_currency(@product.total) %></h3>
 <div class="parent"><img class=product_image src="<%= @product.image %>"></div>
 <h2><%= @product.description %></h2>
  <h4><a href="/products/<%=@product.id%>/edit">Edit Product</a></h4>

@@ -4,11 +4,7 @@ class Product < ApplicationRecord
   end
 
   def sale_message
-    if price.to_i<15
-      "Discount Item!" 
-    else
-      "Everyday Value!!"
-    end
+    price.to_i<15
   end
 
   def tax
@@ -18,4 +14,10 @@ class Product < ApplicationRecord
   def total
     tax + price.to_f
   end
+
+  # def discounted?
+  #   if price.to_f<15
+
+  #   end
+  # end
 end
