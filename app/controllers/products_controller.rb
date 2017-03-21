@@ -1,8 +1,13 @@
 class ProductsController < ApplicationController
   def index
-    sort_attribute= params[:sort_by] || "name"
-    @products=Product.all.order(sort_attribute)
+    if params[:discounted]=="true"
+      @products=Product.where("price < ?", 15)
+    else
+    sort_attribute=params[:sort_by] || "name"
+    direction=params[:order] || "asc"
+    @products=Product.all.order(sort_attribute => direction)
     render "index.html.erb"
+    end
   end
 
   def show
