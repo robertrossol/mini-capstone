@@ -8,6 +8,7 @@
         <h3><%=number_to_currency(product.price)%></h3>
         <img class="product_image" src="<%= product.image %>">
         <p><%=product.description%></p>
+        <h4>Made by <%= product.supplier.name %></h4>
         <h6>Added <%= product.friendly_created_at %></h6>
       </div>
     </div>

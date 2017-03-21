@@ -1,4 +1,9 @@
 class Product < ApplicationRecord
+  belongs_to :supplier
+  # def supplier
+  #   Supplier.find_by(id: self.supplier_id)
+  # end
+  
   def friendly_created_at
     created_at.strftime("%B %e, %Y")
   end

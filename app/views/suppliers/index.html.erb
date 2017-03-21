@@ -1,0 +1,6 @@
+<h1>All Suppliers</h1>
+<% @suppliers.each do |supplier|%>
+  <h2><a href="/supplier/<%=supplier.id%>"><%=supplier.name%></a></h2>
+  <h3><%=supplier.phone%></h3>
+  <h3><%=supplier.email%></h3>
+<% end %>

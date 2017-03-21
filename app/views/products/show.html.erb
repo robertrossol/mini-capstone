@@ -1,5 +1,6 @@
 <h1>Product Info</h1>
 <h1><%= @product.name %></h1>
+<h4>Made by <%= @product.supplier.name %></h4>
 <% if @product.sale_message %>
   <h3>Discount Item</h3>
   <h3 class="discount-item">Price: <%= number_to_currency(@product.price) %></h3>
