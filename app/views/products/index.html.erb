@@ -1,4 +1,5 @@
 <h1>All Products</h1>
+<h2>You've visited this page <%= @page_count %> times.</h2>
 <% @products.each_slice(3) do |three_products| %>
 <div class="row">
   <% three_products.each do |product| %>
@@ -6,7 +7,11 @@
       <div class="well">
         <h2><a href="/products/<%=product.id%>"><%= product.name%></a></h2>
         <h3><%=number_to_currency(product.price)%></h3>
-        <img class="product_image" src="<%= product.image %>">
+        <% if product.images.first %>
+          <img class="product_image" src="<%= product.images.first.url %>">
+          <% end %>
+
+
         <p><%=product.description%></p>
         <h4>Made by <%= product.supplier.name %></h4>
         <h6>Added <%= product.friendly_created_at %></h6>
@@ -16,3 +21,5 @@
 </div>
 <% end %>
 <div><a href="/products/new">Add New Product</a></div>
+<div><a href="/suppliers">View Suppliers</a></div>
+<div><a href="/images">All Images</a></div>

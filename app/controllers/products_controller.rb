@@ -1,5 +1,11 @@
 class ProductsController < ApplicationController
   def index
+    if session[:count]==nil
+      session[:count]=0
+    end
+      session[:count]+=1
+      @page_count = session[:count]
+
     if params[:discounted]=="true"
       @products=Product.where("price < ?", 15)
     else
@@ -21,9 +27,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(name: params[:form_name], price: params[:form_price],image: params[:image_name], description: params[:description])
-    product.save
-    render "create.html.erb"
+    @product = Product.create(name: params[:form_name], price: params[:form_price], description: params[:form_description], supplier_id: params[:form_supplier])
   end
 
   def edit
@@ -37,8 +41,8 @@ class ProductsController < ApplicationController
     @product = Product.find_by(id: product_id)
     @product.name = params[:form_name]
     @product.price = params[:form_price]
-    @product.image = params[:form_image]
     @product.description = params[:form_description]
+    @product.supplier_id = params[:form_supplier]
     @product.save
     redirect_to "/products/#{@product.id}"
     #render "update.html.erb"

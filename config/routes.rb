@@ -8,5 +8,13 @@ Rails.application.routes.draw do
   get "/products/:id/edit" => "products#edit"
   patch "/products/:id" => "products#update"
   delete "/products/:id" => "products#destroy"
+  get "/images" => "images#index"
+  get "products/:id/images/" => "images#show"
+  get "/products/:id/images/new" => "images#new"
+  post "/images" => "images#create"
+
+
+  # get "/users/new" => "users#new"
+  # post "/users" => "users#create"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

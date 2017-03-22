@@ -3,7 +3,8 @@ class Product < ApplicationRecord
   # def supplier
   #   Supplier.find_by(id: self.supplier_id)
   # end
-  
+  has_many :images
+
   def friendly_created_at
     created_at.strftime("%B %e, %Y")
   end
@@ -20,6 +21,10 @@ class Product < ApplicationRecord
     tax + price.to_f
   end
 
+  def show_images
+    images=Image.all
+    images.select{|image| image[:product_id]==product[:id]}
+  end
   # def discounted?
   #   if price.to_f<15
 
