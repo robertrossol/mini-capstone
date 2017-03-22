@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get "products/:id/images/" => "images#show"
   get "/products/:id/images/new" => "images#new"
   post "/images" => "images#create"
+  get "/images/:id/edit" => "images#edit"
+  patch "/images/:id" => "images#update"
 
 
   # get "/users/new" => "users#new"

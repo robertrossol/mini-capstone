@@ -1,1 +1,12 @@
-<h1>Images for <%@product.name%> </h1>
+<h1>Images for <%=@product.name%> </h1>
+<h1>Images for <%=@product.images[0].id%> </h1>
+
+<div class="parent">
+  <%@product.images.each do |image|%>
+    <img class=product_image src="<%= image.url %>">
+    <h1><% "image.product_id"%></h1>
+  <% end %>
+</div>
+
+<div><a href="/products/:id/images/new">Add New Image</a></div>
+

@@ -1,0 +1,16 @@
+<h1>Edit Images</h1>
+<div class="parent">
+  <%@product.images.each do |image|%>
+    <img class=product_image src="<%= image.url %>">
+    <%= form_tag "/images", method: :patch do %> <!-- :method => :post -->
+      <div class="form-group">
+        Url: <input class="form-control" type='text' name="url" value="<%=@product.images.first.url%>">
+      </div>
+      <div class="form-group">
+        Product ID: <input class="form-control" type='text' name="product_id" value="<%=@product.images.first.url%>">
+      </div>
+      <input type ="submit" value="Update Image">
+    <% end %>
+    <div><a href="/products">Back to Products</a></div>
+  <% end %>
+</div>

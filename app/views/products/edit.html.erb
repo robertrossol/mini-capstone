@@ -12,5 +12,18 @@
   <div class="form-group">
     Supplier Name: <input type='text' class="form-control" value="<%= @product.supplier_id%>" name="form_supplier">
   </div>
+
+  <!-- <div class="parent">
+  <%@product.images.each do |image|%>
+    <img class=product_image src="<%= image.url %>">
+      <div class="form-group">
+        Url: <input class="form-control" type='text' name="url" value="<%=@product.images.first.url%>">
+      </div>
+      <div class="form-group">
+        Product ID: <input class="form-control" type='text' name="product_id" value="<%=@product.images.sample.product_id%>">
+      </div>
+  <% end %>
+  </div> -->
+
   <input type ="submit" value="Update Product Info">
 <% end %>
