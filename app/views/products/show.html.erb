@@ -20,12 +20,18 @@
 </div>
 <h2><%= @product.description %></h2>
 <h2><%= @product.supplier.name %></h2>
+
  <h4><a href="/products/<%=@product.id%>/edit">Edit Product</a></h4>
  <%= form_tag "/products/#{@product.id}", method: :delete do %>
   <!-- <input type="submit" value="Destroy Product"> -->
  <% end %>
 <%= link_to "Destroy Product", "/products/#{@product.id}", method: :delete %>
-<div><a href="/products/:id/images/new">Add New Image</a></div>
+<div><a href="/products/<%=@product.id%>/images/new">Add New Image</a></div>
 <div><a href="/images">All Images</a></div>
-
 <div><a href="/products">Back to Products</a></div>
+
+<%= form_tag "/orders", method: :post do %>
+  Product ID: <input type='text' name="product_id">
+  Quantity: <input type='integer' name="quanity">
+  <input type ="submit" value="Buy Now!">
+<% end %>

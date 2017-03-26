@@ -1,3 +1,6 @@
+<% if current_user %>
+  <p>Hi <%= current_user.name %>!</p>
+<% end %>
 <h1>All Products</h1>
 <h2>You've visited this page <%= @page_count %> times.</h2>
 <% @products.each_slice(3) do |three_products| %>
