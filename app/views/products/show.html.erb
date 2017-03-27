@@ -13,7 +13,7 @@
 <h3>Tax: <%= number_to_currency(@product.tax) %></h3>
 <h3>Total: <%= number_to_currency(@product.total) %></h3>
 <div class="parent">
-  <%@product.images.each do |image|%>
+  <%@product.images.sort.each do |image|%>
     <img class=product_image src="<%= image.url %>">
     <h1><% image.product_id%></h1>
   <% end %>
@@ -31,7 +31,8 @@
 <div><a href="/products">Back to Products</a></div>
 
 <%= form_tag "/orders", method: :post do %>
-  Product ID: <input type='text' name="product_id">
-  Quantity: <input type='integer' name="quanity">
+<!--   Product ID: <input type='text' name="product_id" value="<%=@product.id%>">
+ -->  Quantity: <input type='integer' name="quanity">
+  <input type="hidden" name="product_id" value="<%=@product.id%>">
   <input type ="submit" value="Buy Now!">
 <% end %>

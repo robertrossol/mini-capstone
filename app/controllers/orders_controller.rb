@@ -4,14 +4,21 @@ class OrdersController < ApplicationController
     quanity=params[:quanity].to_i
     tax=((product.price * 0.09).round(2))*quanity
     subtotal=product.price*quanity
-    order = Order.create(
-      user_id: current_user.id,
-      product_id: product.id,
+    # order = Order.create(
+    #   user_id: current_user.id,
+    #   product_id: product.id,
+    #   quanity: params[:quanity],
+    #   subtotal: subtotal,
+    #   tax: tax,
+    #   total: subtotal+tax,
+    #   )
+    order=Order.new(
       quanity: params[:quanity],
-      subtotal: subtotal,
-      tax: tax,
-      total: subtotal+tax,
-    )
+      product_id: params[:product_id],
+      user_id: current_user.id
+      )
+    order.calculate_totals
+    order.save
     redirect_to "/orders/#{order.id}"
   end
 

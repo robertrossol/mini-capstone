@@ -11,8 +11,9 @@ class ImagesController < ApplicationController
   end
 
   def create
+    @id=params[:product_id]
     @image= Image.create(url: params[:url], product_id: params[:product_id])
-    redirect_to "/products"
+    redirect_to "/products/#{@id}/images/new"
   end
 
   def show

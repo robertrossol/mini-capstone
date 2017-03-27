@@ -28,7 +28,8 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.create(name: params[:form_name], price: params[:form_price], description: params[:form_description], supplier_id: params[:form_supplier])
-    redirect_to "/products/#{@product.id}"
+      redirect_to "/products/#{@product.id}/images/new"
+    # redirect_to "/products/#{@product.id}"
   end
 
   def edit
