@@ -8,6 +8,9 @@ class ProductsController < ApplicationController
 
     if params[:discounted]=="true"
       @products=Product.where("price < ?", 15)
+    elsif params[:category]
+      category=Category.find_by(name: params[:category])
+      @products=category.products
     else
     sort_attribute=params[:sort_by] || "name"
     direction=params[:order] || "asc"
