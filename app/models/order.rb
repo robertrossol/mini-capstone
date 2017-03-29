@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :product, optional: true
+  has_many :carted_products
 
   def calculate_totals
     product = Product.find_by(id: product_id)
