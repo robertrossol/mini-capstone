@@ -5,5 +5,5 @@
 <h2>Total: <%=@order.total%></h2>
 <h2>Email: <%=@order.user.email%></h2>
 <h2><%@order.carted_products.each do |thing|%></h2>
-  <h2><%=thing.product.name%>-<%=thing.quantity%> x <%=thing.product.price%>  =    <%=thing.product.price*thing.quantity%>          + Tax: <%=thing.product.tax%>      =  <%=(thing.product.price*1.09.round(2))*thing.quantity%></h2>
+  <h2><%=thing.product.name%>-<%=thing.quantity%> x <%=thing.product.price%>  =    <%=thing.product.price*thing.quantity%>          + Tax: <%=thing.product.tax%>      =  <%=number_to_currency((thing.product.price*1.09.round(2))*thing.quantity)%></h2>
 <% end %>

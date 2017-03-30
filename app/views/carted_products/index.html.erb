@@ -3,29 +3,22 @@
   <% @cart_items.each do |item| %>
     <div class="col-md-4">
       <div class="well">
-        <%=@subtotal+=item.product.price*item.quantity%>
         <h2><%= item.product.name%></h2>
         <% if item.product.images.first %>
         <img class="product_image" src="<%= item.product.images.first.url %>">
         <h2>Quantity: <%=item.quantity%></h2>
         <h2>Subtotal: <%=item.product.price * item.quantity%></h2>
-        <h2>Tax: <%=((item.product.price * 0.09).round(2)*item.quantity)%></h2>
-        <h2>Total: <%=((item.product.price * 0.09).round(2)+item.product.price) * item.quantity %></h2>
+        <h2>Tax: <%=((item.product.price * 0.09)*item.quantity).round(2)%></h2>
+        <h2>Total: <%=number_to_currency(((item.product.price * 0.09).round(2)+item.product.price) * item.quantity) %></h2>
+        <%= form_tag "/carted_products/#{item.id}", method: :delete do %>
+          <input type="submit" value="Remove from cart">
+        <% end %>
       </div>
     </div>
     <% end %>
   <% end %>
 <% end %>
-<h2><%=@subtotal%></h2>
-<h2><%@tax=@subtotal* (0.09.round(2))%></h2>
-<h2><%@total=@tax+@subtotal%></h2>
-<h2><%=@tax%></h2>
-<h2><%=@total%></h2>
 
 <%= form_tag "/orders", method: :post do %>
   <input type ="submit" value="Buy Now!">
-  <input type="hidden" name="subtotal" value="<%=@subtotal%>">
-  <input type="hidden" name="tax" value="<%=@tax%>">
-  <input type="hidden" name="total" value="<%=@total%>">
-
 <% end %>
