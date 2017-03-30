@@ -31,9 +31,9 @@
 <div><a href="/images">All Images</a></div>
 <div><a href="/products">Back to Products</a></div>
 
-<%= form_tag "/orders", method: :post do %>
+<%= form_tag "/carted_products", method: :post do %>
 <!--   Product ID: <input type='text' name="product_id" value="<%=@product.id%>">
- -->  Quantity: <input type='integer' name="quanity">
+ -->  Quantity: <input type='integer' name="quantity">
   <input type="hidden" name="product_id" value="<%=@product.id%>">
-  <input type ="submit" value="Buy Now!">
+  <input type ="submit" value="Add to Cart">
 <% end %>

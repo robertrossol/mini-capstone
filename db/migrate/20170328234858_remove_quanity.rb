@@ -1,5 +1,5 @@
-class RemoveQuanity < ActiveRecord::Migration[5.0]
+class Removequantity < ActiveRecord::Migration[5.0]
   def change
-    remove_column :orders, :quanity, :integer
+    remove_column :orders, :quantity, :integer
   end
 end

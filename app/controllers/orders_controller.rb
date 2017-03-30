@@ -1,24 +1,35 @@
 class OrdersController < ApplicationController
+  def index
+    render "index.html.erb"
+  end
   def create
-    product = Product.find_by(id: params[:product_id])
-    quanity=params[:quanity].to_i
-    tax=((product.price * 0.09).round(2))*quanity
-    subtotal=product.price*quanity
+    # product = Product.find_by(id: params[:product_id])
+    # quantity=params[:quantity].to_i
+    # tax=((product.price * 0.09).round(2))*quantity
+    # subtotal=product.price*quantity
+
     # order = Order.create(
     #   user_id: current_user.id,
     #   product_id: product.id,
-    #   quanity: params[:quanity],
+    #   quantity: params[:quantity],
     #   subtotal: subtotal,
     #   tax: tax,
     #   total: subtotal+tax,
     #   )
-    order=Order.new(
-      quanity: params[:quanity],
-      product_id: params[:product_id],
-      user_id: current_user.id
+    @cart_items=current_user.carted_products.where(status: "carted")
+
+    order=Order.create(
+      user_id: current_user.id,
+      subtotal: params[:subtotal],
+      tax: params[:tax],
+      total: params[:total]
       )
-    order.calculate_totals
-    order.save
+    @cart_items.each do |item|
+      item.update(
+        order_id: order.id,
+        status: "purchased"
+        )
+    end
     redirect_to "/orders/#{order.id}"
   end
 
